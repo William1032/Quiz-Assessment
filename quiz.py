@@ -17,17 +17,18 @@ class Quiz():
         self.quiz_frame.grid()
 
         #heading
-        self.quiz_heading = Label(self.quiz_frame, text="Temperature Converter", font=("Arial", "16", "bold"))
+        self.quiz_heading = Label(self.quiz_frame, text="Temperature Converter", font=("Arial", "20", "bold"))
         self.quiz_heading.grid(row=0)
 
         #instructions
-        instructions = ("Please enter an answer to the presented question")
-        self.quiz_instructions = Label(self.quiz_frame, text=instructions, wraplength=250, width=40, justify="left")
+        instructions = "hello"
+        self.quiz_instructions = Label(self.quiz_frame, text=instructions, wraplength=250, width=40, justify="center", font=("Arial", "14", "bold"))
         self.quiz_instructions.grid(row=1)
 
         #entry field
         self.quiz_entry = Entry(self.quiz_frame, font=("Arial", "14"))
         self.quiz_entry.grid(row=2, padx=10, pady=10)
+        solution = 1
 
         #errors
         error = ""
@@ -70,50 +71,50 @@ class Quiz():
         #reset label and entry box in case of error
         self.answer_error.config(fg="#004C99", font=("Arial", "13", "bold"))
         self.quiz_entry.config(bg="#FFFFFF")
-
-        #error = f"Enter a number greater than/equal to {min_temp}"
+        
 
         try:
-            user_input = float(user_input)
+            user_input = str(user_input)
             #if user_input >= min_temp:
             self.answer_question(user_input)
 
         except ValueError:
-            self.answer_error.config(text="Answer Invalid", fg="#9C0000", font=("Arial", "14", "bold"))
+            pass
+            #self.answer_error.config(text="Answer Invalid", fg="#9C0000", font=("Arial", "14", "bold"))
+
+        self.generate_question()
         
 
         #convert
 
 
-    def generate_question():
+    def generate_question(self):
+        print("gen")
         first_part = random.randint(1, 100)
         second_part = random.randint(1, 100)
         operator = random.randint(1, 4)
         if operator == 1:
-            solution = first_part + second_part
-            question_text = first_part, "+", second_part
-            instructions = ("Please enter an answer to the presented question:", question_text)
+            self.solution = first_part + second_part
+            question_text = str(first_part) + "+" + str(second_part)
+            problem = ("Please enter an answer to the presented question: " + question_text)
         elif operator == 2:
-            solution = first_part - second_part
-            question_text = first_part, "-", second_part
-            instructions = ("Please enter an answer to the presented question:", question_text)
+            self.solution = first_part - second_part
+            question_text = str(first_part) + "-" + str(second_part)
+            problem = ("Please enter an answer to the presented question: " + question_text)
         elif operator == 3:
-            solution = first_part / second_part
-            question_text = first_part, "/", second_part
-            instructions = ("Please enter an answer to the presented question:", question_text)
+            self.solution = first_part / second_part
+            question_text = str(first_part) + "/" + str(second_part)
+            problem = ("Please enter an answer to the presented question: " + question_text)
         elif operator == 4:
-            solution = first_part * second_part
-            question_text = first_part, "x", second_part
-            instructions = ("Please enter an answer to the presented question:", question_text)
+            self.solution = first_part * second_part
+            question_text = str(first_part) + "x" + str(second_part)
+            problem = ("Please enter an answer to the presented question: " + question_text)
+        self.quiz_instructions.config(text=problem)
 
 
-    def answer_question(self, user_input):
+    def answer_question(self, user_input, solution):
         print(user_input)
-
-
-        #self.to_history_button.config(state=NORMAL)
-        #self.answer_error.config(text=answer_statement)
-        #self.all_calculations_list.append(answer)
+        #if user_input == 
     
     #def history(self, list):
         #history_statement = str(list).strip("[]").replace("'", "")
