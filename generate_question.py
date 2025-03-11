@@ -2,6 +2,8 @@ import random
 import quiz as main
 class generate:
 
+    solution = 0
+
     def generate_question():
             print("gen")
             first_part = random.randint(1, 100)
@@ -16,7 +18,8 @@ class generate:
                 question_text = str(first_part) + "-" + str(second_part)
                 problem = ("Please enter an answer to the presented question: " + question_text)
             elif operator == 3:
-                solution = first_part / second_part
+                divided = first_part / second_part
+                solution = round(divided, 2)
                 question_text = str(first_part) + "/" + str(second_part)
                 problem = ("Please enter an answer to the presented question: " + question_text)
             elif operator == 4:
@@ -24,7 +27,7 @@ class generate:
                 question_text = str(first_part) + "x" + str(second_part)
                 problem = ("Please enter an answer to the presented question: " + question_text)
             generate.generate_answer(first_part, second_part, operator)
-            return problem
+            return problem, solution
             
     def generate_answer(first_part, second_part, operator):
             if operator == 1:
@@ -34,9 +37,12 @@ class generate:
                 solution = first_part - second_part
 
             elif operator == 3:
-                solution = first_part / second_part
+                divided = first_part / second_part
+                solution = round(divided, 2)
 
             elif operator == 4:
                 solution = first_part * second_part
+            print(solution)
             return solution
+            
          
