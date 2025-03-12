@@ -121,6 +121,8 @@ class Quiz():
 # main routine
 if __name__ == "__main__":
     root = Tk()
+    root.maxsize(500, 300)
+    root.minsize(500, 300)
     root.title("Math Quiz")
     Quiz()
     root.mainloop()
