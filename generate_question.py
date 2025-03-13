@@ -27,7 +27,7 @@ class generate:
                 question_text = str(first_part) + "x" + str(second_part)
                 problem = ("Please enter an answer to the presented question: " + question_text)
             generate.generate_answer(first_part, second_part, operator)
-            return problem, solution
+            return problem, solution, question_text
             
     def generate_answer(first_part, second_part, operator):
             if operator == 1:

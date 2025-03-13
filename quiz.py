@@ -92,6 +92,7 @@ class Quiz():
         #create next question and display
 
     def next_question(self):
+        global new_question
         new_question = gen.generate.generate_question()
         global new_answer
         new_answer = new_question[1]
@@ -116,7 +117,8 @@ class Quiz():
         else:
             self.gui_instructions.config(text = "Incorrect!")
             self.has_answered = True
-
+        full_hist = str(new_question[2] + " = " + str(user_input))
+        self.question_history.append(full_hist)
     #display history
 
     def history(self, list):
