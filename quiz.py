@@ -13,7 +13,7 @@ class Quiz():
         score = 0
 
 
-        #previous list
+        #previous questions list
         self.question_history = []
         """
         quiz gui
@@ -28,17 +28,17 @@ class Quiz():
 
         #instructions
         instructions = "Click the Start button to start"
-        self.quiz_instructions = Label(self.quiz_frame, text=instructions, wraplength=250, width=40, justify="center", font=("Arial", "14", "bold"))
+        self.quiz_instructions = Label(self.quiz_frame, text=instructions, wraplength=250, width=40, height=3, justify="center", font=("Arial", "14", "bold"))
         self.quiz_instructions.grid(row=1)
 
         #entry field
         self.quiz_entry = Entry(self.quiz_frame, font=("Arial", "14"))
         self.quiz_entry.grid(row=2, padx=10, pady=10)
 
-        #errors
+        #score
         score_text = "Score: 0" #+ score
-        self.answer_error = Label(self.quiz_frame, text=score_text, fg="#000000", font=("Arial", "14", "bold"))
-        self.answer_error.grid(row=3)
+        self.score_gui_text = Label(self.quiz_frame, text=score_text, fg="#000000", font=("Arial", "14", "bold"))
+        self.score_gui_text.grid(row=3)
 
         #conversion, help, and history
         self.button_frame = Frame(self.quiz_frame)
@@ -97,6 +97,7 @@ class Quiz():
         new_answer = new_question[1]
         self.gui_instructions.config(text = new_question[0])
         self.next_button.config(text = "Next Question")
+        self.has_answered = False
 
     
     #compare user input and answer
@@ -105,18 +106,22 @@ class Quiz():
         print(new_answer)
         if user_input == float(new_answer):
             self.gui_instructions.config(text = "Correct!")
-            global score
-            score += 1
-            self.answer_error.config(fg="#000000", font=("Arial", "13", "bold"), text= "Score: " + str(score))
+            global has_answered
+            if self.has_answered == False:
+                global score
+                score += 1
+                self.has_answered = True
+            self.score_gui_text.config(fg="#000000", font=("Arial", "13", "bold"), text= "Score: " + str(score))
 
         else:
             self.gui_instructions.config(text = "Incorrect!")
+            self.has_answered = True
 
     #display history
 
     def history(self, list):
         history_statement = str(list).strip("[]").replace("'", "")
-        self.answer_error.config(text=history_statement, wraplength=250)
+        self.score_gui_text.config(text=history_statement, wraplength=250)
 
 # main routine
 if __name__ == "__main__":
