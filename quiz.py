@@ -1,6 +1,7 @@
 from tkinter import *
 import random
 import generate_question as gen
+import os
 
 
 class Quiz():
@@ -101,7 +102,7 @@ class Quiz():
         self.has_answered = False
 
     
-    #compare user input and answer
+    #compare user input and answer then add to the history list
 
     def answer_question(self, user_input):
         print(new_answer)
@@ -112,18 +113,21 @@ class Quiz():
                 global score
                 score += 1
                 self.has_answered = True
+                full_hist = str(new_question[2] + " = " + str(user_input) + "(Correct)")
             self.score_gui_text.config(fg="#000000", font=("Arial", "13", "bold"), text= "Score: " + str(score))
 
         else:
             self.gui_instructions.config(text = "Incorrect!")
             self.has_answered = True
-        full_hist = str(new_question[2] + " = " + str(user_input))
-        self.question_history.append(full_hist)
-    #display history
-
+            full_hist = str(new_question[2] + " = " + str(user_input) + " (Incorrect)")
+        self.question_history.append(full_hist + "nlr")
+    
+    #move the history list to a file and open it
     def history(self, list):
-        history_statement = str(list).strip("[]").replace("'", "")
-        self.score_gui_text.config(text=history_statement, wraplength=250)
+        history_statement = str(list).strip("[]").replace("'", "").replace(",", "").replace("nlr", "\n")
+        history_file = open("history.txt", "w")
+        history_file.write(history_statement)
+        os.startfile("history.txt")
 
 # main routine
 if __name__ == "__main__":
