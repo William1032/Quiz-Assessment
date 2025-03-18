@@ -49,7 +49,7 @@ class Quiz():
         button_details_list = [
             ["Submit Answer", "#990099", lambda:self.check_input(), 0, 1],
             ["History", "#009900", lambda:self.history(self.question_history), 1, 0],
-            ["Stats", "#CC6600", lambda:gen.generate.generate_question(), 1, 1],
+            ["Quit", "#CC6600", lambda:self.quit(), 1, 1],
             ["Start", "#004C99", lambda:self.next_question(), 1, 2]
         ]
 
@@ -128,6 +128,10 @@ class Quiz():
         history_file = open("history.txt", "w")
         history_file.write(history_statement)
         os.startfile("history.txt")
+
+
+    def quit(self):
+        quit()
 
 # main routine
 if __name__ == "__main__":
