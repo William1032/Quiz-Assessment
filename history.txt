@@ -1,2 +1,0 @@
-8-97 = 3.0 (Incorrect)
- 21x60 = 55.0 (Incorrect)
