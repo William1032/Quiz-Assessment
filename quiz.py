@@ -102,7 +102,7 @@ class Quiz():
         self.has_answered = False
 
     
-    #compare user input and answer then add to the history list
+    #compare user input and answer then add to the history list, adjust score if correct
 
     def answer_question(self, user_input):
         print(new_answer)
