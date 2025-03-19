@@ -28,7 +28,7 @@ class Quiz():
         self.quiz_heading.grid(row=0)
 
         #instructions
-        instructions = "Click the Start button to start"
+        instructions = "Click the Start button to begin"
         self.quiz_instructions = Label(self.quiz_frame, text=instructions, wraplength=250, width=40, height=3, justify="center", font=("Arial", "14", "bold"))
         self.quiz_instructions.grid(row=1)
 
