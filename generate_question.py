@@ -29,7 +29,7 @@ class generate:
                 question_text = str(first_part) + "x" + str(second_part)
                 problem = ("Please enter an answer to the presented question: " + question_text)
             generate.generate_answer(first_part, second_part, operator)
-            #return the problem solution and text to display to the main file
+            #return the problem, solution, and text to display to the main file
             return problem, solution, question_text
             
             #cheating for test purposes gives me the answer
