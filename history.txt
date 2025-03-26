@@ -1,0 +1,3 @@
+38/42 = 0.9(Correct)
+ 69x39 = 2691.0(Correct)
+ 35x24 = 3.0 (Incorrect)
